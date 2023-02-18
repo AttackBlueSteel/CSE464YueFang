@@ -46,9 +46,9 @@ public class MyCode {
         System.out.println("after removing an edge:\n" + myGraph);
         removeNodes(new String[]{"test_node1", "test_node2"});
         //feature 4
-//        outputDOTGraph("src/testFiles/output.dot");
-//        outputGraphics("src/testFiles/output.jpg", "JPG");
-//        outputGraphics("src/testFiles/output.png", "PNG");
+        outputDOTGraph("src/testFiles/output.dot");
+        outputGraphics("src/testFiles/output.jpg", "JPG");
+        outputGraphics("src/testFiles/output.png", "PNG");
     }
 
     public static void parseGraph(String filepath) throws IOException {
@@ -101,6 +101,21 @@ public class MyCode {
             graph.removeEdge(node1, node2);
         }
     }
-    
 
+    public static void outputDOTGraph(String filepath) throws IOException {
+        DOTExporter<String, DefaultEdge> dot_exporter = new DOTExporter<>();
+        Writer string_writer = new StringWriter();
+        dot_exporter.exportGraph(graph, string_writer);
+        FileWriter file_writer = new FileWriter(filepath);
+        file_writer.write(string_writer.toString());
+        file_writer.close();
+    }
+
+    public static void outputGraphics(String path, String format) throws IOException {
+        JGraphXAdapter jgxAdapter = new JGraphXAdapter(graph);
+        mxIGraphLayout layout = new mxCircleLayout(jgxAdapter);
+        layout.execute(jgxAdapter.getDefaultParent());
+        BufferedImage image = mxCellRenderer.createBufferedImage(jgxAdapter, null, 1, Color.WHITE, true, null);
+        ImageIO.write(image, format, new File(path));
+    }
 }
