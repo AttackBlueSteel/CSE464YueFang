@@ -1,13 +1,15 @@
+import com.mxgraph.layout.*;
+import com.mxgraph.util.mxCellRenderer;
 import org.jgrapht.*;
+import org.jgrapht.ext.*;
 import org.jgrapht.graph.*;
-import org.jgrapht.nio.*;
 import org.jgrapht.nio.dot.*;
-import org.jgrapht.traverse.*;
 import java.io.*;
-import java.net.*;
-import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.awt.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 public class MyCode {
     static Graph<String, DefaultEdge> graph;
@@ -36,6 +38,17 @@ public class MyCode {
         System.out.println("after adding three nodes:\n" + myGraph);
         removeNodes(new String[]{"test_node1", "test_node2", "test_node3"});
         System.out.println("after removing three nodes:\n" + myGraph);
+        //feature 3,for displaying, we first add two new nodes
+        addNodes(new String[]{"test_node1", "test_node2"});
+        addEdge("test_node1","test_node2");
+        System.out.println("after adding an edge:\n" + myGraph);
+        removeEdge("test_node1","test_node2");
+        System.out.println("after removing an edge:\n" + myGraph);
+        removeNodes(new String[]{"test_node1", "test_node2"});
+        //feature 4
+//        outputDOTGraph("src/testFiles/output.dot");
+//        outputGraphics("src/testFiles/output.jpg", "JPG");
+//        outputGraphics("src/testFiles/output.png", "PNG");
     }
 
     public static void parseGraph(String filepath) throws IOException {
@@ -53,30 +66,41 @@ public class MyCode {
         file_writer.close();
     }
 
-    public static void addNode(String label) {
-        if(!graph.vertexSet().contains(label)) {
-            graph.addVertex(label);
+    public static void addNode(String node) {
+        if(!graph.vertexSet().contains(node)) {
+            graph.addVertex(node);
         }
     }
 
-    public static void addNodes(String[] label) {
-        for(int i = 0; i < label.length; i++){
-            addNode(label[i]);
+    public static void addNodes(String[] nodes) {
+        for(int i = 0; i < nodes.length; i++){
+            addNode(nodes[i]);
         }
     }
 
-    public static void removeNode(String label) {
-        if(graph.vertexSet().contains(label)) {
-            graph.removeVertex(label);
+    public static void removeNode(String node) {
+        if(graph.vertexSet().contains(node)) {
+            graph.removeVertex(node);
         }
     }
 
-    public static void removeNodes(String[] label) {
-        for(int i = 0; i < label.length; i++) {
-            removeNode(label[i]);
+    public static void removeNodes(String[] nodes) {
+        for(int i = 0; i < nodes.length; i++) {
+            removeNode(nodes[i]);
         }
     }
 
+    public static void addEdge(String node1, String node2) {
+        if(!graph.containsEdge(node1, node2)) {
+            graph.addEdge(node1, node2);
+        }
+    }
 
+    public static void removeEdge(String node1, String node2) {
+        if(graph.containsEdge(node1, node2)) {
+            graph.removeEdge(node1, node2);
+        }
+    }
+    
 
 }
