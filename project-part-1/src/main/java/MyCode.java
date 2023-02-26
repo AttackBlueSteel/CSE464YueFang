@@ -28,92 +28,67 @@ public class MyCode {
 
     //for testing
     public static void main(String[] args) throws IOException {
-//        //feature 1
+    }
+
+//    @Test
+//    public void testFeature1() throws IOException{
+//        MyCode myGraph = new MyCode();
+//        parseGraph("src/testFiles/dotGraph.dot");
+//        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
+//        System.out.println(myGraph);
+//        outputGraph("src/testFiles/output.txt");
+//    }
+//
+//    @Test
+//    public void testFeature2() throws IOException{
 //        MyCode myGraph = new MyCode();
 //        parseGraph("src/testFiles/dotGraph.dot");
 //        System.out.println(myGraph);
-//        outputGraph("src/testFiles/output.txt");
-//        //feature 2
 //        addNode("test_node");
+//        Assert.assertEquals(14,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
 //        System.out.println("after adding a node:\n" + myGraph);
 //        removeNode("test_node");
+//        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
 //        System.out.println("after removing a node:\n" + myGraph);
 //        addNodes(new String[]{"test_node1", "test_node2", "test_node3"});
+//        Assert.assertEquals(16,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
 //        System.out.println("after adding three nodes:\n" + myGraph);
 //        removeNodes(new String[]{"test_node1", "test_node2", "test_node3"});
+//        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
 //        System.out.println("after removing three nodes:\n" + myGraph);
-//        //feature 3,for displaying, we first add two new nodes
+//    }
+//
+//    @Test
+//    public void testFeature3() throws IOException{
+//        MyCode myGraph = new MyCode();
+//        parseGraph("src/testFiles/dotGraph.dot");
+//        System.out.println(myGraph);
 //        addNodes(new String[]{"test_node1", "test_node2"});
 //        addEdge("test_node1","test_node2");
+//        Assert.assertEquals(15,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(27,myGraph.graph.edgeSet().size());
 //        System.out.println("after adding an edge:\n" + myGraph);
 //        removeEdge("test_node1","test_node2");
 //        System.out.println("after removing an edge:\n" + myGraph);
 //        removeNodes(new String[]{"test_node1", "test_node2"});
-//        //feature 4
+//        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
+//        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
+//    }
+//
+//    @Test
+//    public void testFeature4() throws IOException{
+//        MyCode myGraph = new MyCode();
+//        parseGraph("src/testFiles/dotGraph.dot");
+//        System.out.println(myGraph);
 //        outputDOTGraph("src/testFiles/output.dot");
 //        outputGraphics("src/testFiles/output.jpg", "JPG");
 //        outputGraphics("src/testFiles/output.png", "PNG");
-    }
-
-    @Test
-    public void testFeature1() throws IOException{
-        MyCode myGraph = new MyCode();
-        parseGraph("src/testFiles/dotGraph.dot");
-        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-        System.out.println(myGraph);
-        outputGraph("src/testFiles/output.txt");
-    }
-
-    @Test
-    public void testFeature2() throws IOException{
-        MyCode myGraph = new MyCode();
-        parseGraph("src/testFiles/dotGraph.dot");
-        System.out.println(myGraph);
-        addNode("test_node");
-        Assert.assertEquals(14,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-        System.out.println("after adding a node:\n" + myGraph);
-        removeNode("test_node");
-        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-        System.out.println("after removing a node:\n" + myGraph);
-        addNodes(new String[]{"test_node1", "test_node2", "test_node3"});
-        Assert.assertEquals(16,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-        System.out.println("after adding three nodes:\n" + myGraph);
-        removeNodes(new String[]{"test_node1", "test_node2", "test_node3"});
-        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-        System.out.println("after removing three nodes:\n" + myGraph);
-    }
-
-    @Test
-    public void testFeature3() throws IOException{
-        MyCode myGraph = new MyCode();
-        parseGraph("src/testFiles/dotGraph.dot");
-        System.out.println(myGraph);
-        addNodes(new String[]{"test_node1", "test_node2"});
-        addEdge("test_node1","test_node2");
-        Assert.assertEquals(15,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(27,myGraph.graph.edgeSet().size());
-        System.out.println("after adding an edge:\n" + myGraph);
-        removeEdge("test_node1","test_node2");
-        System.out.println("after removing an edge:\n" + myGraph);
-        removeNodes(new String[]{"test_node1", "test_node2"});
-        Assert.assertEquals(13,myGraph.graph.vertexSet().size());
-        Assert.assertEquals(26,myGraph.graph.edgeSet().size());
-    }
-
-    @Test
-    public void testFeature4() throws IOException{
-        MyCode myGraph = new MyCode();
-        parseGraph("src/testFiles/dotGraph.dot");
-        System.out.println(myGraph);
-        outputDOTGraph("src/testFiles/output.dot");
-        outputGraphics("src/testFiles/output.jpg", "JPG");
-        outputGraphics("src/testFiles/output.png", "PNG");
-    }
+//    }
     public static void parseGraph(String filepath) throws IOException {
         String dot_format = new String(Files.readAllBytes(Paths.get(filepath)));
         graph = new SimpleDirectedGraph<>(DefaultEdge.class);
