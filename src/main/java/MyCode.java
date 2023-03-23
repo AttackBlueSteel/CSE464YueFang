@@ -7,10 +7,10 @@ import org.jgrapht.nio.dot.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.awt.*;
+import java.awt.Color;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -101,5 +101,24 @@ public class MyCode {
         layout.execute(jgxAdapter.getDefaultParent());
         BufferedImage image = mxCellRenderer.createBufferedImage(jgxAdapter, null, 1, Color.WHITE, true, null);
         ImageIO.write(image, format, new File(path));
+    }
+
+    public static Path GraphSearch(String src, String dst) throws IOException {
+        Path temp_path = new Path();
+        temp_path.append(src);
+        while(temp_path.size()!=0){
+            String temp_node = temp_path.get(temp_path.size()-1);
+            if(temp_node.equals(dst)){
+                return temp_path;
+            }
+            for(Object o: graph.vertexSet()){
+                if(!((String)o).equals(temp_node)&&graph.containsEdge(temp_node,(String) o)){
+                    temp_path.append((String) o);
+                    break;
+                }
+            }
+        }
+        Path empty_path = new Path();
+        return empty_path;
     }
 }
