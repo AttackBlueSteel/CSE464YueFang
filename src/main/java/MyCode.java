@@ -103,7 +103,9 @@ public class MyCode {
         ImageIO.write(image, format, new File(path));
     }
 
-    public static Path GraphSearch(String src, String dst) throws IOException {
+    public static Path GraphSearch(String src, String dst, Algorithm algorithm) throws IOException {
+        switch(algorithm) {
+            case BFS:
 
 
     List queue = new ArrayList();
@@ -127,5 +129,29 @@ public class MyCode {
     }
     Path empty_path = new Path();
     return empty_path;
-}
+        
+
+        case DFS:
+
+        Path temp_path = new Path();
+        temp_path.append(src);
+        while(temp_path.size()!=0){
+            String temp_node = temp_path.get(temp_path.size()-1);
+            if(temp_node.equals(dst)){
+                return temp_path;
+            }
+            for(Object o: graph.vertexSet()){
+                if(!((String)o).equals(temp_node)&&graph.containsEdge(temp_node,(String) o)){
+                    temp_path.append((String) o);
+                    break;
+                }
+            }
+        }
+        Path empty_path2 = new Path();
+        return empty_path2;
+        
+    }
+    return null;
+
+    }
 }
