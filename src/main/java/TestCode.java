@@ -15,12 +15,12 @@ public class TestCode {
     }
     @Test
     public void testDFSSearch() throws IOException {
-        Path result = demo.GraphSearch("v1","v6");
+        Path result = demo.GraphSearch("v1","v6",Algorithm.DFS);
         Assert.assertEquals(result.toString(),"v1->v2->v5->v6");
     }
     @Test
     public void testBFSSearch() throws IOException {
-        Path result = demo.GraphSearch("v1","v6");
+        Path result = demo.GraphSearch("v1","v6",Algorithm.BFS);
         Assert.assertEquals(result.toString(),"v1->v3->v6");
     }
 }
