@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+enum SearchType{
+    DFSTYPE,
+    BFSTYPE
+}
 public class Path {
     private List path = new ArrayList();
     public void append(String node){

@@ -2,16 +2,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
-public class TestCode {
+public class TestCodePart2 {
     static MyCode demo;
     @Before
     public void setup() throws Exception {
         demo = new MyCode();
-        demo.parseGraph("src/testFiles/dotGraph.dot");
+        demo.parseGraph("src/testFiles/dotGraphPart2.dot");
     }
     @Test
     public void testDFSSearch() throws IOException {
