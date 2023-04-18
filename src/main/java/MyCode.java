@@ -30,10 +30,10 @@ public class MyCode {
     public static void main(String[] args) throws IOException {
     }
     public static void outputGraph(String filepath) throws IOException {
-        String dot_format = (new MyCode()).toString();
-        FileWriter file_writer = new FileWriter(filepath);
-        file_writer.write(dot_format);
-        file_writer.close();
+        String dotFormat = (new MyCode()).toString();
+        FileWriter fileWriter = new FileWriter(filepath);
+        fileWriter.write(dotFormat);
+        fileWriter.close();
     }
 
     public static void addNode(String node) {
@@ -50,8 +50,8 @@ public class MyCode {
 
     public static void removeNode(String node) {
         if(graph.vertexSet().contains(node)) {
-            Set<DefaultEdge> temp_set = graph.edgesOf(node);
-            for(DefaultEdge edge: temp_set){
+            Set<DefaultEdge> tempSet = graph.edgesOf(node);
+            for(DefaultEdge edge: tempSet){
                 graph.removeEdge(edge);
             }
             graph.removeVertex(node);
@@ -77,12 +77,12 @@ public class MyCode {
     }
 
     public static void outputDOTGraph(String filepath) throws IOException {
-        DOTExporter<String, DefaultEdge> dot_exporter = new DOTExporter<>();
-        Writer string_writer = new StringWriter();
-        dot_exporter.exportGraph(graph, string_writer);
-        FileWriter file_writer = new FileWriter(filepath);
-        file_writer.write(string_writer.toString());
-        file_writer.close();
+        DOTExporter<String, DefaultEdge> dotExporter = new DOTExporter<>();
+        Writer stringWriter = new StringWriter();
+        dotExporter.exportGraph(graph, stringWriter);
+        FileWriter fileWriter = new FileWriter(filepath);
+        fileWriter.write(stringWriter.toString());
+        fileWriter.close();
     }
 
     public static void outputGraphics(String path, String format) throws IOException {
@@ -93,56 +93,56 @@ public class MyCode {
         ImageIO.write(image, format, new File(path));
     }
     public static void parseGraph(String filepath) throws IOException {
-        String dot_format = new String(Files.readAllBytes(Paths.get(filepath)));
+        String dotFormat = new String(Files.readAllBytes(Paths.get(filepath)));
         graph = new SimpleDirectedGraph<>(DefaultEdge.class);
-        DOTImporter<String, DefaultEdge> dot_importer = new DOTImporter<>();
-        dot_importer.setVertexFactory(id->id);
-        dot_importer.importGraph(graph, new StringReader(dot_format));
+        DOTImporter<String, DefaultEdge> dotImporter = new DOTImporter<>();
+        dotImporter.setVertexFactory(id->id);
+        dotImporter.importGraph(graph, new StringReader(dotFormat));
     }
     public static Path GraphSearch(String src, String dst, Algorithm algorithm) throws IOException {
    
         switch(algorithm) {
 
             case DFS:
-            Path temp_path = new Path();
-            temp_path.append(src);
-            while (temp_path.size() != 0) {
-                String temp_node = temp_path.get(temp_path.size() - 1);
-                if (temp_node.equals(dst)) {
-                    return temp_path;
+            Path tempPath = new Path();
+            tempPath.append(src);
+            while (tempPath.size() != 0) {
+                String tempNode = tempPath.get(tempPath.size() - 1);
+                if (tempNode.equals(dst)) {
+                    return tempPath;
                 }
                 for (Object o : graph.vertexSet()) {
-                    if (!((String) o).equals(temp_node) && graph.containsEdge(temp_node, (String) o)) {
-                        temp_path.append((String) o);
+                    if (!((String) o).equals(tempNode) && graph.containsEdge(tempNode, (String) o)) {
+                        tempPath.append((String) o);
                         break;
                     }
                 }
             }
-            Path empty_path = new Path();
-            return empty_path;
+            Path emptyPath = new Path();
+            return emptyPath;
             
             case BFS:
             List queue = new ArrayList();
-            Path init_path = new Path();
-            init_path.append(src);
-            queue.add(init_path);
+            Path initPath = new Path();
+            initPath.append(src);
+            queue.add(initPath);
             while (!queue.isEmpty()) {
-                Path temp_path2 = (Path) queue.get(0);
+                Path tempPath2 = (Path) queue.get(0);
                 queue.remove(0);
-                String temp_node = temp_path2.get(temp_path2.size() - 1);
-                if (temp_node.equals(dst)) {
-                    return temp_path2;
+                String tempNode = tempPath2.get(tempPath2.size() - 1);
+                if (tempNode.equals(dst)) {
+                    return tempPath2;
                 }
                 for (Object o : graph.vertexSet()) {
-                    if (!((String) o).equals(temp_node) && graph.containsEdge(temp_node, (String) o)) {
-                        Path new_path = Path.copy_path(temp_path2);
-                        new_path.append((String) o);
-                        queue.add(new_path);
+                    if (!((String) o).equals(tempNode) && graph.containsEdge(tempNode, (String) o)) {
+                        Path newPath = Path.copyPath(tempPath2);
+                        newPath.append((String) o);
+                        queue.add(newPath);
                     }
                 }
             }
-            Path empty_path2 = new Path();
-            return empty_path2;
+            Path emptyPath2 = new Path();
+            return emptyPath2;
             
         }
         return null;

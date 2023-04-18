@@ -2,13 +2,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 enum SearchType{
     DFSTYPE,
     BFSTYPE
 }
+
 public class Path {
-    private List path = new ArrayList();
+    private List<String> path = new ArrayList<>();
+
     public void append(String node){
         path.add(node);
     }
@@ -17,7 +18,7 @@ public class Path {
         return path.isEmpty();
     }
 
-    public List get_path(){
+    public List<String> getPath(){
         return path;
     }
 
@@ -26,18 +27,18 @@ public class Path {
     }
 
     public String get(int num){
-        return (String) path.get(num);
+        return path.get(num);
     }
 
     public String pop(){
-        String result = (String) path.get(path.size()-1);
+        String result = path.get(path.size()-1);
         path.remove(path.size()-1);
         return result;
     }
 
-    public static Path copy_path(Path temp){
+    public static Path copyPath(Path temp){
         Path result = new Path();
-        for(Object o:temp.get_path()){
+        for(Object o:temp.getPath()){
             result.append((String) o);
         }
         return result;
@@ -45,10 +46,10 @@ public class Path {
 
     @Override
     public String toString() {
-        Iterator iterator = path.iterator();
+        Iterator<String> iterator = path.iterator();
         String s = "";
         while(iterator.hasNext()){
-            String temp = (String) iterator.next();
+            String temp = iterator.next();
             if(iterator.hasNext()) {
                 s = s + temp + "->";
             }
@@ -58,6 +59,4 @@ public class Path {
         }
         return s;
     }
-
-
 }
