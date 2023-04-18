@@ -38,8 +38,8 @@ public class Path {
 
     public static Path copyPath(Path temp){
         Path result = new Path();
-        for(Object o:temp.getPath()){
-            result.append((String) o);
+        for(String o:temp.getPath()){
+            result.append(o);
         }
         return result;
     }
