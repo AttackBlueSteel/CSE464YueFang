@@ -43,8 +43,8 @@ public class MyCode {
     }
 
     public static void addNodes(String[] nodes) {
-        for(int i = 0; i < nodes.length; i++){
-            addNode(nodes[i]);
+        for (String node : nodes) {
+            addNode(node);
         }
     }
 
@@ -59,8 +59,8 @@ public class MyCode {
     }
 
     public static void removeNodes(String[] nodes) {
-        for(int i = 0; i < nodes.length; i++) {
-            removeNode(nodes[i]);
+        for (String node : nodes) {
+            removeNode(node);
         }
     }
 
