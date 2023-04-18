@@ -47,16 +47,16 @@ public class Path {
     @Override
     public String toString() {
         Iterator<String> iterator = path.iterator();
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while(iterator.hasNext()){
             String temp = iterator.next();
             if(iterator.hasNext()) {
-                s = s + temp + "->";
+                s.append(temp).append("->");
             }
             else{
-                s = s + temp;
+                s.append(temp);
             }
         }
-        return s;
+        return s.toString();
     }
 }
