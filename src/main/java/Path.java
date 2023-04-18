@@ -36,6 +36,10 @@ public class Path {
         return result;
     }
 
+    public String getLastNode() {
+        return path.get(path.size()-1);
+    }
+
     public static Path copyPath(Path temp){
         Path result = new Path();
         for(String o:temp.getPath()){
