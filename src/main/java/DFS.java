@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Set;
 
-public class DFS extends GraphSearchAlgorithm {
+public class DFS extends GraphSearchAlgorithm implements GraphSearch {
     public DFS(Graph<String, DefaultEdge> graph) {
         super(graph);
     }

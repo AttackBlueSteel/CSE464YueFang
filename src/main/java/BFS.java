@@ -5,7 +5,7 @@ import org.jgrapht.graph.DefaultEdge;
 import java.util.Deque;
 import java.util.Set;
 
-public class BFS extends GraphSearchAlgorithm{
+public class BFS extends GraphSearchAlgorithm implements GraphSearch{
 
     public BFS(Graph<String, DefaultEdge> graph) {
         super(graph);

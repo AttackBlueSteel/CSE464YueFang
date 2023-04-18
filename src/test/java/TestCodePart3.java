@@ -23,4 +23,14 @@ public class TestCodePart3 {
         Path result = searchAlgorithm.search("v1","v6");
         Assert.assertEquals(result.toString(),"v1->v3->v6");
     }
+    @Test
+    public void testStrategyPatternDFSSearch() throws IOException {
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.DFS);
+        Assert.assertEquals(result.toString(),"v1->v2->v5->v6");
+    }
+    @Test
+    public void testStrategyPatternBFSSearch() throws IOException {
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.BFS);
+        Assert.assertEquals(result.toString(),"v1->v3->v6");
+    }
 }
