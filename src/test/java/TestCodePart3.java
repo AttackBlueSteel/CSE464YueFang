@@ -33,4 +33,9 @@ public class TestCodePart3 {
         Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.BFS);
         Assert.assertEquals(result.toString(),"v1->v3->v6");
     }
+    @Test
+    public void testRandomWalkSearch() throws IOException {
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.RANDOM_WALK);
+        System.out.println(result.toString());
+    }
 }

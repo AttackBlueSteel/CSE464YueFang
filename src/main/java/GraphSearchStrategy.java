@@ -11,6 +11,9 @@ public class GraphSearchStrategy {
             case DFS:
                 searchStrategy = new DFS(graph);
                 break;
+            case RANDOM_WALK:
+                searchStrategy = new RandomWalk(graph);
+                break;
             default:
                 throw new IllegalArgumentException("Unsupported algorithm: " + algo);
         }

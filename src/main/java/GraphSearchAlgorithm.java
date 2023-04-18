@@ -30,6 +30,7 @@ public abstract class GraphSearchAlgorithm {
             }
 
             visitedNodes.add(currPath.getLastNode());
+            System.out.println("visiting Path: " + currPath);
 
             if (currPath.getLastNode().equals(dst)) {
                 return currPath;
