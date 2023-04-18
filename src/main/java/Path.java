@@ -13,12 +13,10 @@ public class Path {
         path.add(node);
     }
 
-    public boolean notempty(){
-        if(path.size()==0){
-            return false;
-        }
-        return true;
+    public boolean isEmpty(){
+        return path.isEmpty();
     }
+
     public List get_path(){
         return path;
     }

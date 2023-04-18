@@ -1,23 +1,22 @@
-import com.mxgraph.layout.*;
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.layout.mxIGraphLayout;
 import com.mxgraph.util.mxCellRenderer;
-import org.apache.commons.lang3.ObjectUtils;
-import org.jgrapht.*;
-import org.jgrapht.ext.*;
-import org.jgrapht.graph.*;
-import org.jgrapht.nio.dot.*;
+import org.jgrapht.Graph;
+import org.jgrapht.ext.JGraphXAdapter;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleDirectedGraph;
+import org.jgrapht.nio.dot.DOTExporter;
+import org.jgrapht.nio.dot.DOTImporter;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.awt.*;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.w3c.dom.Node;
 
 public class MyCode {
     public static Graph<String, DefaultEdge> graph;
