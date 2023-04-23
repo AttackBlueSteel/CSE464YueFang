@@ -14,28 +14,28 @@ public class TestCodePart3 {
     @Test
     public void testDFSSearch() throws IOException {
         GraphSearchAlgorithm searchAlgorithm = new DFS(MyCode.graph);
-        Path result = searchAlgorithm.search("v1","v6");
-        Assert.assertEquals(result.toString(),"v1->v2->v5->v6");
+        Path result = searchAlgorithm.search("a","h");
+        Assert.assertEquals(result.toString(),"a->e->f->h");
     }
     @Test
     public void testBFSSearch() throws IOException {
         GraphSearchAlgorithm searchAlgorithm = new BFS(MyCode.graph);
-        Path result = searchAlgorithm.search("v1","v6");
-        Assert.assertEquals(result.toString(),"v1->v3->v6");
+        Path result = searchAlgorithm.search("a","h");
+        Assert.assertEquals(result.toString(),"a->e->f->h");
     }
     @Test
     public void testStrategyPatternDFSSearch() throws IOException {
-        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.DFS);
-        Assert.assertEquals(result.toString(),"v1->v2->v5->v6");
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"a","h",Algorithm.DFS);
+        Assert.assertEquals(result.toString(),"a->e->f->h");
     }
     @Test
     public void testStrategyPatternBFSSearch() throws IOException {
-        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.BFS);
-        Assert.assertEquals(result.toString(),"v1->v3->v6");
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"a","h",Algorithm.BFS);
+        Assert.assertEquals(result.toString(),"a->e->f->h");
     }
     @Test
     public void testRandomWalkSearch() throws IOException {
-        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"v1","v6",Algorithm.RANDOM_WALK);
+        Path result = GraphSearchStrategy.GraphSearch(MyCode.graph,"a","h",Algorithm.RANDOM_WALK);
         System.out.println(result.toString());
     }
 }
